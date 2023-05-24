@@ -86,6 +86,7 @@
                     <th scope="col">Valor Compra</th>
                     <th scope="col">Valor Venda</th>
                     <th scope="col">Data</th>
+                    <th scope="col">Ação</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -99,6 +100,12 @@
                       <td><?php echo number_format($produto->valor_compra,2,',','.');?></td>
                       <td><?php echo number_format($produto->valor_venda,2,',','.');?></td>
                       <td><?php echo date('d/m/Y',strtotime($produto->createdAt));?></td>
+                      <td>
+                        <form method="post" action="cad-produto.php">
+                          <input type="hidden" name="id" value="<?php echo $produto->id;?>" />
+                          <button class="btn btn-success">Editar</button>
+                        </form>
+                      </td>
                     </tr>
                 <?php
                   }

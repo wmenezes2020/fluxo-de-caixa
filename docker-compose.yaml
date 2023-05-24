@@ -20,6 +20,7 @@ services:
 
   backend:
     image: node:19-alpine
+    restart: always
     container_name: node-container
     build: ./app
     ports:
