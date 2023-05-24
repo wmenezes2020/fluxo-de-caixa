@@ -88,7 +88,7 @@
         </div>
 
         <form method="post" action="fornecedores.php">
-          <input type="hidden" name="cad_fornecedor" value="1" />
+          <input type="hidden" name="edit_fornecedor" value="1" />
           <input type="hidden" name="id" value="<?php echo $id;?>" />
 			    <div class="card bg-secondary shadow">
 

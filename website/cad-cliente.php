@@ -1,24 +1,4 @@
-﻿<?php
-
-  if($_POST['id']){
-    foreach($jsonClientes as $cliente){
-      if($cliente->id == $_POST['id']){
-        $id = $cliente->id;
-        $nome = $cliente->nome;
-        $email = $cliente->email;
-        $telefone = $cliente->telefone;
-      }
-    }
-  }else{
-
-    $id = '';
-    $nome = '';
-    $email = '';
-    $telefone = '';
-
-  }
-
-?><!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt_BR">
 
 <head>
@@ -76,7 +56,25 @@
     <!-- Header -->
     <?php include("topo.php"); ?>
 
+<?php
 
+  $id = '';
+  $nome = '';
+  $email = '';
+  $telefone = '';
+
+  if(isset($_POST['id'])){
+    foreach($jsonClientes as $cliente){
+      if($cliente->id == $_POST['id']){
+        $id = $cliente->id;
+        $nome = $cliente->nome;
+        $email = $cliente->email;
+        $telefone = $cliente->telefone;
+      }
+    }
+  }
+
+?>
     <!-- Page content -->
     <div class="container-fluid mt--7">
 

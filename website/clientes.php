@@ -99,7 +99,7 @@
                       <td><?php echo $cliente->email;?></td>
                       <td><?php echo date('d/m/Y',strtotime($cliente->createdAt));?></td>
                       <td>
-                        <form method="post" action="cad-cliente.php">
+                        <form method="post" action="edit-cliente.php">
                           <input type="hidden" name="id" value="<?php echo $cliente->id;?>" />
                           <button class="btn btn-success">Editar</button>
                         </form>

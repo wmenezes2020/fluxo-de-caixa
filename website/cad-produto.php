@@ -1,28 +1,4 @@
-﻿<?php
-
-  if($_POST['id']){
-    foreach($jsonProdutos as $produto){
-      if($produto->id == $_POST['id']){
-        $id = $produto->id;
-        $nome = $produto->nome;
-        $valor_compra = $produto->valor_compra;
-        $valor_venda = $produto->valor_venda;
-        $unid = $produto->unid;
-        $status = $produto->status;
-      }
-    }
-  }else{
-
-    $id = '';
-    $nome = '';
-    $valor_compra = '';
-    $valor_venda = '';
-    $unid = '';
-    $status = '';
-
-  }
-
-?><!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt_BR">
 
 <head>
@@ -80,6 +56,27 @@
     <!-- Header -->
     <?php include("topo.php"); ?>
 
+<?php
+  $id = '';
+  $nome = '';
+  $valor_compra = '';
+  $valor_venda = '';
+  $unid = '';
+  $status = '';
+
+  if(isset($_POST['id'])){
+    foreach($jsonProdutos as $produto){
+      if($produto->id == $_POST['id']){
+        $id = $produto->id;
+        $nome = $produto->nome;
+        $valor_compra = $produto->valor_compra;
+        $valor_venda = $produto->valor_venda;
+        $unid = $produto->unid;
+        $status = $produto->status;
+      }
+    }
+  }
+?>
 
     <!-- Page content -->
     <div class="container-fluid mt--7">

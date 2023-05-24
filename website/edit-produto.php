@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Fornecedor - Fluxo de Caixa - MINSOFT</title>
+  <title>Produto - Fluxo de Caixa - MINSOFT</title>
   <!-- Favicon -->
   <link href="./assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -48,31 +48,34 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Fornecedor</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Produto</a>
         <!-- User -->
         <?php include("top_user.php");?>
       </div>
     </nav>
     <!-- Header -->
     <?php include("topo.php"); ?>
-<?php
 
+<?php
   $id = '';
   $nome = '';
-  $email = '';
-  $telefone = '';
+  $valor_compra = '';
+  $valor_venda = '';
+  $unid = '';
+  $status = '';
 
   if(isset($_POST['id'])){
-    foreach($jsonFornecedores as $fornecedor){
-      if($fornecedor->id == $_POST['id']){
-        $id = $fornecedor->id;
-        $nome = $fornecedor->nome;
-        $email = $fornecedor->email;
-        $telefone = $fornecedor->telefone;
+    foreach($jsonProdutos as $produto){
+      if($produto->id == $_POST['id']){
+        $id = $produto->id;
+        $nome = $produto->nome;
+        $valor_compra = $produto->valor_compra;
+        $valor_venda = $produto->valor_venda;
+        $unid = $produto->unid;
+        $status = $produto->status;
       }
     }
   }
-
 ?>
 
     <!-- Page content -->
@@ -82,13 +85,13 @@
         <div class="card-header border-0">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="mb-0">Fornecedor</h3>
+              <h3 class="mb-0">Produto</h3>
             </div>
           </div>
         </div>
 
-        <form method="post" action="fornecedores.php">
-          <input type="hidden" name="cad_fornecedor" value="1" />
+        <form method="post" action="produtos.php">
+          <input type="hidden" name="edit_produto" value="1" />
           <input type="hidden" name="id" value="<?php echo $id;?>" />
 			    <div class="card bg-secondary shadow">
 
@@ -109,8 +112,8 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label class="form-control-label" for="telefone">Telefone</label>
-                        <input type="text" id="telefone" class="form-control form-control-alternative" name="telefone" placeholder="" value="<?php echo $telefone;?>" />
+                        <label class="form-control-label" for="valor_compra">Valor de Compra</label>
+                        <input type="number" id="valor_compra" class="form-control form-control-alternative" name="valor_compra" placeholder="0" value="<?php echo $valor_compra;?>" />
                       </div>
                     </div>
                   </div>
@@ -120,8 +123,33 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label class="form-control-label" for="email">E-mail</label>
-                        <input type="email" id="email" class="form-control form-control-alternative" name="email" placeholder="" value="<?php echo $email;?>" />
+                        <label class="form-control-label" for="valor_venda">Valor de Venda</label>
+                        <input type="number" id="valor_venda" class="form-control form-control-alternative" name="valor_venda" placeholder="0" value="<?php echo $valor_venda;?>" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+				        <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="unid">Unidades no Estoque</label>
+                        <input type="number" id="unid" class="form-control form-control-alternative" name="unid" placeholder="0" value="<?php echo $unid;?>" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+				        <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="unid">Status</label>
+                        <select class="form-control" id="status" name="status">
+                          <option value="1">Ativo</option>
+                          <option value="0">Inativo</option>
+                        </select>
                       </div>
                     </div>
                   </div>

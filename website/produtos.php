@@ -101,7 +101,7 @@
                       <td><?php echo number_format($produto->valor_venda,2,',','.');?></td>
                       <td><?php echo date('d/m/Y',strtotime($produto->createdAt));?></td>
                       <td>
-                        <form method="post" action="cad-produto.php">
+                        <form method="post" action="edit-produto.php">
                           <input type="hidden" name="id" value="<?php echo $produto->id;?>" />
                           <button class="btn btn-success">Editar</button>
                         </form>

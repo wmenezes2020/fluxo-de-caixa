@@ -1,214 +1,331 @@
 <?php
 
-if(isset($_POST['cad_produto'])){
+  if(isset($_POST['cad_produto'])){
 
-    $data = json_encode($_POST);
+      $data = json_encode($_POST);
 
-		$curl = curl_init();
-		curl_setopt_array($curl, array(
-		  CURLOPT_URL => $url . "/produtos/cadastrar",
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => "",
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 30,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => "POST",
-		  CURLOPT_POSTFIELDS => $data,
-		  CURLOPT_HTTPHEADER => array(
-			"accept: application/json",
-			"authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
-			"content-type: application/json"
-		  ),
-		));
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => $url . "/produtos/cadastrar",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => array(
+        "accept: application/json",
+        "authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
+        "content-type: application/json"
+        ),
+      ));
 
-		$response = json_decode(curl_exec($curl));
-		$err = curl_error($curl);
+      $response = json_decode(curl_exec($curl));
+      $err = curl_error($curl);
 
-    if(isset($response->error)){
-      ?>
-      <script>
-        alert('<?php echo $response->message;?>');
-      </script>
-      <?php
-    }else{
-      ?>
-      <script>
-        alert('<?php echo $response->mensagem;?>');
-      </script>
-      <?php
-    }
-    curl_close($curl);
-}
+      if(isset($response->error)){
+        ?>
+        <script>
+          alert('<?php echo $response->message;?>');
+        </script>
+        <?php
+      }else{
+        ?>
+        <script>
+          alert('<?php echo $response->mensagem;?>');
+        </script>
+        <?php
+      }
+      curl_close($curl);
+  }
 
+  if(isset($_POST['edit_produto'])){
 
-if(isset($_POST['cad_fornecedor'])){
+      $data = json_encode($_POST);
 
-    $data = json_encode($_POST);
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => $url . "/produtos/atualizar",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => array(
+        "accept: application/json",
+        "authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
+        "content-type: application/json"
+        ),
+      ));
 
-		$curl = curl_init();
-		curl_setopt_array($curl, array(
-		  CURLOPT_URL => $url . "/fornecedores/cadastrar",
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => "",
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 30,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => "POST",
-		  CURLOPT_POSTFIELDS => $data,
-		  CURLOPT_HTTPHEADER => array(
-			"accept: application/json",
-			"authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
-			"content-type: application/json"
-		  ),
-		));
+      $response = json_decode(curl_exec($curl));
+      $err = curl_error($curl);
 
-		$response = json_decode(curl_exec($curl));
-		$err = curl_error($curl);
-
-    if(isset($response->error)){
-      ?>
-      <script>
-        alert('<?php echo $response->message;?>');
-      </script>
-      <?php
-    }else{
-      ?>
-      <script>
-        alert('<?php echo $response->mensagem;?>');
-      </script>
-      <?php
-    }
-    curl_close($curl);
-}
-
-
-if(isset($_POST['cad_cliente'])){
-
-    $data = json_encode($_POST);
-
-		$curl = curl_init();
-		curl_setopt_array($curl, array(
-		  CURLOPT_URL => $url . "/clientes/cadastrar",
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => "",
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 30,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => "POST",
-		  CURLOPT_POSTFIELDS => $data,
-		  CURLOPT_HTTPHEADER => array(
-			"accept: application/json",
-			"authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
-			"content-type: application/json"
-		  ),
-		));
-
-		$response = json_decode(curl_exec($curl));
-		$err = curl_error($curl);
-
-    if(isset($response->error)){
-      ?>
-      <script>
-        alert('<?php echo $response->message;?>');
-      </script>
-      <?php
-    }else{
-      ?>
-      <script>
-        alert('<?php echo $response->mensagem;?>');
-      </script>
-      <?php
-    }
-    curl_close($curl);
-}
-
-
-
-if(isset($_POST['nova_venda'])){
-
-    $data = json_encode($_POST);
-
-		$curl = curl_init();
-		curl_setopt_array($curl, array(
-		  CURLOPT_URL => $url . "/vendas/cadastrar",
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => "",
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 30,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => "POST",
-		  CURLOPT_POSTFIELDS => $data,
-		  CURLOPT_HTTPHEADER => array(
-			"accept: application/json",
-			"authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
-			"content-type: application/json"
-		  ),
-		));
-
-		$response = json_decode(curl_exec($curl));
-		$err = curl_error($curl);
-
-    if(isset($response->error)){
-      ?>
-      <script>
-        alert('<?php echo $response->message;?>');
-      </script>
-      <?php
-    }else{
-      ?>
-      <script>
-        alert('<?php echo $response->mensagem;?>');
-      </script>
-      <?php
-    }
-
-		curl_close($curl);
+      if(isset($response->error)){
+        ?>
+        <script>
+          alert('<?php echo $response->message;?>');
+        </script>
+        <?php
+      }else{
+        ?>
+        <script>
+          alert('<?php echo $response->mensagem;?>');
+        </script>
+        <?php
+      }
+      curl_close($curl);
   }
 
 
+  if(isset($_POST['cad_fornecedor'])){
+
+      $data = json_encode($_POST);
+
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => $url . "/fornecedores/cadastrar",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => array(
+        "accept: application/json",
+        "authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
+        "content-type: application/json"
+        ),
+      ));
+
+      $response = json_decode(curl_exec($curl));
+      $err = curl_error($curl);
+
+      if(isset($response->error)){
+        ?>
+        <script>
+          alert('<?php echo $response->message;?>');
+        </script>
+        <?php
+      }else{
+        ?>
+        <script>
+          alert('<?php echo $response->mensagem;?>');
+        </script>
+        <?php
+      }
+      curl_close($curl);
+  }
+
+  if(isset($_POST['edit_fornecedor'])){
+
+      $data = json_encode($_POST);
+
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => $url . "/fornecedores/atualizar",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => array(
+        "accept: application/json",
+        "authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
+        "content-type: application/json"
+        ),
+      ));
+
+      $response = json_decode(curl_exec($curl));
+      $err = curl_error($curl);
+
+      if(isset($response->error)){
+        ?>
+        <script>
+          alert('<?php echo $response->message;?>');
+        </script>
+        <?php
+      }else{
+        ?>
+        <script>
+          alert('<?php echo $response->mensagem;?>');
+        </script>
+        <?php
+      }
+      curl_close($curl);
+  }
+
+
+  if(isset($_POST['cad_cliente'])){
+
+      $data = json_encode($_POST);
+
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => $url . "/clientes/cadastrar",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => array(
+        "accept: application/json",
+        "authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
+        "content-type: application/json"
+        ),
+      ));
+
+      $response = json_decode(curl_exec($curl));
+      $err = curl_error($curl);
+
+      if(isset($response->error)){
+        ?>
+        <script>
+          alert('<?php echo $response->message;?>');
+        </script>
+        <?php
+      }else{
+        ?>
+        <script>
+          alert('<?php echo $response->mensagem;?>');
+        </script>
+        <?php
+      }
+      curl_close($curl);
+  }
+
+
+  if(isset($_POST['edit_cliente'])){
+
+      $data = json_encode($_POST);
+
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => $url . "/clientes/atualizar",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => array(
+        "accept: application/json",
+        "authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
+        "content-type: application/json"
+        ),
+      ));
+
+      $response = json_decode(curl_exec($curl));
+      $err = curl_error($curl);
+
+      if(isset($response->error)){
+        ?>
+        <script>
+          alert('<?php echo $response->message;?>');
+        </script>
+        <?php
+      }else{
+        ?>
+        <script>
+          alert('<?php echo $response->mensagem;?>');
+        </script>
+        <?php
+      }
+      curl_close($curl);
+  }
+
+
+  if(isset($_POST['nova_venda'])){
+
+      $data = json_encode($_POST);
+
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => $url . "/vendas/cadastrar",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => array(
+        "accept: application/json",
+        "authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
+        "content-type: application/json"
+        ),
+      ));
+
+      $response = json_decode(curl_exec($curl));
+      $err = curl_error($curl);
+
+      if(isset($response->error)){
+        ?>
+        <script>
+          alert('<?php echo $response->message;?>');
+        </script>
+        <?php
+      }else{
+        ?>
+        <script>
+          alert('<?php echo $response->mensagem;?>');
+        </script>
+        <?php
+      }
+
+      curl_close($curl);
+  }
 
 
   if(isset($_POST['nova_compra'])){
 
-    $data = json_encode($_POST);
+      $data = json_encode($_POST);
 
-		$curl = curl_init();
-		curl_setopt_array($curl, array(
-		  CURLOPT_URL => $url . "/compras/cadastrar",
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => "",
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 30,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => "POST",
-		  CURLOPT_POSTFIELDS => $data,
-		  CURLOPT_HTTPHEADER => array(
-			"accept: application/json",
-			"authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
-			"content-type: application/json"
-		  ),
-		));
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => $url . "/compras/cadastrar",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => array(
+        "accept: application/json",
+        "authorization: Basic bG9jdXRvcjpsazI4dW5qczcvKg==",
+        "content-type: application/json"
+        ),
+      ));
 
-		$response = json_decode(curl_exec($curl));
-		$err = curl_error($curl);
+      $response = json_decode(curl_exec($curl));
+      $err = curl_error($curl);
 
-		if(isset($response->error)){
-      ?>
-      <script>
-        alert('<?php echo $response->message;?>');
-      </script>
-      <?php
-    }else{
-      ?>
-      <script>
-        alert('<?php echo $response->mensagem;?>');
-      </script>
-      <?php
-    }
+      if(isset($response->error)){
+        ?>
+        <script>
+          alert('<?php echo $response->message;?>');
+        </script>
+        <?php
+      }else{
+        ?>
+        <script>
+          alert('<?php echo $response->mensagem;?>');
+        </script>
+        <?php
+      }
 
-		curl_close($curl);
+      curl_close($curl);
   }
-
 
 
 

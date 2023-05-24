@@ -99,7 +99,7 @@
                       <td><?php echo $fornecedor->email;?></td>
                       <td><?php echo date('d/m/Y',strtotime($fornecedor->createdAt));?></td>
                       <td>
-                        <form method="post" action="cad-fornecedor.php">
+                        <form method="post" action="edit-fornecedor.php">
                           <input type="hidden" name="id" value="<?php echo $fornecedor->id;?>" />
                           <button class="btn btn-success">Editar</button>
                         </form>

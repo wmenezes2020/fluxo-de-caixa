@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Fornecedor - Fluxo de Caixa - MINSOFT</title>
+  <title>Cliente - Fluxo de Caixa - MINSOFT</title>
   <!-- Favicon -->
   <link href="./assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -48,13 +48,14 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Fornecedor</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Cliente</a>
         <!-- User -->
         <?php include("top_user.php");?>
       </div>
     </nav>
     <!-- Header -->
     <?php include("topo.php"); ?>
+
 <?php
 
   $id = '';
@@ -63,18 +64,17 @@
   $telefone = '';
 
   if(isset($_POST['id'])){
-    foreach($jsonFornecedores as $fornecedor){
-      if($fornecedor->id == $_POST['id']){
-        $id = $fornecedor->id;
-        $nome = $fornecedor->nome;
-        $email = $fornecedor->email;
-        $telefone = $fornecedor->telefone;
+    foreach($jsonClientes as $cliente){
+      if($cliente->id == $_POST['id']){
+        $id = $cliente->id;
+        $nome = $cliente->nome;
+        $email = $cliente->email;
+        $telefone = $cliente->telefone;
       }
     }
   }
 
 ?>
-
     <!-- Page content -->
     <div class="container-fluid mt--7">
 
@@ -82,13 +82,13 @@
         <div class="card-header border-0">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="mb-0">Fornecedor</h3>
+              <h3 class="mb-0">Cliente</h3>
             </div>
           </div>
         </div>
 
-        <form method="post" action="fornecedores.php">
-          <input type="hidden" name="cad_fornecedor" value="1" />
+        <form method="post" action="clientes.php">
+          <input type="hidden" name="edit_cliente" value="1" />
           <input type="hidden" name="id" value="<?php echo $id;?>" />
 			    <div class="card bg-secondary shadow">
 
