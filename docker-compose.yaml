@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+
+  db:
+    image: mysql
+    restart: always
+    container_name: mysql-container
+    build: ./api/db
+    environment:
+      MYSQL_DATABASE: minsoft
+      MYSQL_USER: minsoft
+      MYSQL_PASSWORD: minsoft
+      MYSQL_ROOT_PASSWORD: minsoft
+    volumes:
+      - './api/db/data:/var/lib/mysql'
+    ports:
+      - 3306:3306
+
+
+
+  backend:
+    image: node:19-alpine
+    container_name: node-container
+    build: ./app
+    ports:
+      - '9001:3000'
+    links:
+      - db
+    volumes:
+      - './app:/app'
+      - '/app/node_modules'
+
+
+
+  frontend:
+    image: wyveo/nginx-php-fpm
+    build: ./website
+    restart: always
+    container_name: frontend-nginx
+    ports:
+      - 9002:80
+    links:
+      - backend
+    volumes:
+      - './website:/usr/share/nginx/html'
+
